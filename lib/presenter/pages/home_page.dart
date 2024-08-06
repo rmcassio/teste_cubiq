@@ -9,15 +9,25 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColors.backgroundColor,
-      body: const Row(
-        children: [
-          SideBar(),
-          ChatsArea(),
-          Expanded(child: ChatArea()),
-        ],
-      ),
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final bool isHalfScreen = constraints.maxWidth <= 850;
+        final bool isMobile = constraints.maxWidth <= 500;
+
+        return Scaffold(
+          backgroundColor: AppColors.backgroundColor,
+          body: !isMobile
+              ? Row(
+                  children: [
+                    const SideBar(),
+                    if (!isHalfScreen) const ChatsArea(isMobile: false),
+                    if (isHalfScreen) const Expanded(child: ChatsArea(isMobile: false)),
+                    const Expanded(child: ChatArea()),
+                  ],
+                )
+              : const ChatsArea(isMobile: true),
+        );
+      },
     );
   }
 }

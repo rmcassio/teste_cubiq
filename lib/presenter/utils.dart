@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
 class AppColors {
-  static Color get messageColor => const Color(0xFFE0E0E0);
+  static Color get messageColor => const Color(0xFFF2F4F7);
   static Color get myMessageColor => const Color(0xFF155EEF);
   static Color get backgroundColor => const Color(0xFFF9FAFB);
+  static Color get backgroundSecondaryColor => const Color(0xFFFFFFFF);
   static Color get borderColor => const Color(0xFFE4E7EC);
   static Color get iconButtonColor => const Color(0xFF2E90FA);
   static Color get actionButtonColor => const Color(0xFF246BE6);
@@ -26,13 +27,13 @@ class AppTexts {
 class AppTextStyles {
   static TextStyle get chatLineTitleStyle => TextStyle(
         fontSize: AppTexts.extraSmallSize,
-        fontWeight: FontWeight.w400,
+        fontWeight: FontWeight.w500,
         color: AppColors.textPrimaryColor,
       );
 
   static TextStyle get chatLineStyle => TextStyle(
         fontSize: AppTexts.extraSmallSize,
-        fontWeight: FontWeight.w500,
+        fontWeight: FontWeight.w400,
         color: AppColors.textTertiaryColor,
       );
 
@@ -61,7 +62,7 @@ class AppTextStyles {
       );
 
   static TextStyle get myMessageStyle => TextStyle(
-        fontSize: AppTexts.pageTitleSize,
+        fontSize: AppTexts.mediumTextSize,
         fontWeight: FontWeight.w500,
         color: AppColors.textWhiteColor,
       );
