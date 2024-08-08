@@ -10,27 +10,57 @@ class ChatLine extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      leading: SizedBox(
-        height: 40,
-        width: 40,
-        child: ClipOval(
-          child: Image.asset(
-            chat.imageUrl,
-            width: 40.0,
-            height: 40.0,
-            fit: BoxFit.cover,
+    return Row(
+      children: [
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+          child: SizedBox(
+            height: 40,
+            width: 40,
+            child: ClipOval(
+              child: Image.asset(
+                chat.imageUrl,
+                width: 40.0,
+                height: 40.0,
+                fit: BoxFit.cover,
+              ),
+            ),
           ),
         ),
-      ),
-      title: Text(chat.name, maxLines: 1, overflow: TextOverflow.ellipsis, style: AppTextStyles.chatLineTitleStyle),
-      subtitle: Text(
-        chat.lastMesasage,
-        maxLines: 1,
-        overflow: TextOverflow.ellipsis,
-        style: AppTextStyles.chatLineStyle,
-      ),
-      trailing: Text(DateFormat('HH:mm').format(chat.lastMessageTime), maxLines: 1, overflow: TextOverflow.ellipsis),
+        Expanded(
+          child: Padding(
+            padding: const EdgeInsets.only(right: 16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(chat.name, maxLines: 1, overflow: TextOverflow.ellipsis, style: AppTextStyles.chatLineTitleStyle),
+                    if (MediaQuery.sizeOf(context).width > 600)
+                      Text(
+                        DateFormat('HH:mm').format(chat.lastMessageTime),
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                          fontSize: AppTexts.extraSmallSize,
+                          fontWeight: FontWeight.w400,
+                          color: AppColors.textQuartiaryColor,
+                        ),
+                      ),
+                  ],
+                ),
+                Text(
+                  chat.lastMesasage,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: AppTextStyles.chatLineStyle,
+                ),
+              ],
+            ),
+          ),
+        ),
+      ],
     );
   }
 }

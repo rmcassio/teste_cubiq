@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:teste_cubiq/presenter/utils.dart';
 
-class MessageBubble extends StatelessWidget {
+class FileBubble extends StatelessWidget {
   final String sender;
   final String message;
   final String time;
   final bool isSentByMe;
 
-  const MessageBubble({
+  const FileBubble({
     required this.sender,
     required this.message,
     required this.time,

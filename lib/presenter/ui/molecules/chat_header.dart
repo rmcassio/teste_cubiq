@@ -35,7 +35,10 @@ class ChatHeader extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(chatName),
+                    Text(
+                      chatName,
+                      style: AppTextStyles.chatTitleStyle,
+                    ),
                     const Text('Tempo restante na janela 24 horas'),
                   ],
                 ),

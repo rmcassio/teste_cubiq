@@ -13,6 +13,7 @@ class AppColors {
   static Color get textPrimaryColor => const Color(0xFF101828);
   static Color get textSecondaryColor => const Color(0xFF344054);
   static Color get textTertiaryColor => const Color(0xFF475467);
+  static Color get textQuartiaryColor => const Color(0xFFD0D5DD);
   static Color get textWhiteColor => const Color(0xFFFFFFFF);
 }
 
@@ -40,6 +41,18 @@ class AppTextStyles {
   static TextStyle get chatTitleStyle => TextStyle(
         fontSize: AppTexts.chatTitleSize,
         fontWeight: FontWeight.w500,
+        color: AppColors.textSecondaryColor,
+      );
+
+  static TextStyle get chatsubTitleStyle => TextStyle(
+        fontSize: AppTexts.mediumTextSize,
+        fontWeight: FontWeight.w400,
+        color: AppColors.sideBarButtonsColor,
+      );
+
+  static TextStyle get pageTitleStyle => TextStyle(
+        fontSize: AppTexts.pageTitleSize,
+        fontWeight: FontWeight.w600,
         color: AppColors.textSecondaryColor,
       );
 

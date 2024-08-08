@@ -21,19 +21,87 @@ class ChatsArea extends StatelessWidget {
                   bottomRight: Radius.circular(12.0),
                 ),
                 border: Border(
-                  right: BorderSide(color: AppColors.borderColor, width: 0.5),
-                  bottom: BorderSide(color: AppColors.borderColor, width: 2),
+                  right: BorderSide(color: Colors.black.withOpacity(0.4), width: 0.5),
+                  bottom: BorderSide(color: Colors.black.withOpacity(0.4), width: 2),
                 ),
               ),
-              margin: const EdgeInsets.only(top: 8.0, bottom: 8.0),
-              child: const Column(
+              child: Column(
                 children: [
-                  SearchField(),
-                  Expanded(child: ChatsList()),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 16.0).copyWith(),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          'Conversas',
+                          style: AppTextStyles.pageTitleStyle,
+                        ),
+                        IconButton(
+                          onPressed: () {},
+                          icon: const Icon(Icons.add),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SearchField(),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 8.0, right: 8.0, bottom: 16),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        // Todas button
+                        TextButton(
+                          onPressed: () {},
+                          style: TextButton.styleFrom(
+                            foregroundColor: Colors.black,
+                            backgroundColor: AppColors.backgroundSecondaryColor,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(18.0),
+                            ),
+                          ),
+                          child: const Padding(
+                            padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+                            child: Text('Todas'),
+                          ),
+                        ),
+                        const SizedBox(width: 8.0),
+                        TextButton(
+                          onPressed: () {},
+                          style: TextButton.styleFrom(
+                            foregroundColor: Colors.black,
+                            backgroundColor: AppColors.backgroundSecondaryColor,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(18.0),
+                              side: BorderSide(color: AppColors.iconButtonColor, width: 2),
+                            ),
+                          ),
+                          child: const Padding(
+                            padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+                            child: Text('Não Lidas'),
+                          ),
+                        ),
+                        TextButton(
+                          onPressed: () {},
+                          style: TextButton.styleFrom(
+                            foregroundColor: Colors.black,
+                            backgroundColor: AppColors.backgroundSecondaryColor,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(18.0),
+                            ),
+                          ),
+                          child: const Padding(
+                            padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+                            child: Text('Encerradas'),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(width: 8.0),
+                  const Expanded(child: ChatsList()),
                 ],
               ),
-            ),
-          )
+            ))
         : const Column(
             children: [
               SearchField(),
@@ -41,43 +109,4 @@ class ChatsArea extends StatelessWidget {
             ],
           );
   }
-}
-
-@override
-Widget build(BuildContext context) {
-  return Scaffold(
-    appBar: AppBar(
-      title: Text('Card with Custom Shadow'),
-    ),
-    body: Center(
-      child: Material(
-        elevation: 8.0, // Shadow strength
-        shadowColor: Colors.black.withOpacity(0.3),
-        borderRadius: BorderRadius.only(
-          topRight: Radius.circular(20.0),
-          bottomRight: Radius.circular(20.0),
-        ),
-        child: Container(
-          width: 200,
-          height: 100,
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.only(
-              topRight: Radius.circular(20.0),
-              bottomRight: Radius.circular(20.0),
-            ),
-            border: Border(
-              top: BorderSide(color: Colors.blue, width: 2.0),
-              right: BorderSide(color: Colors.blue, width: 2.0),
-              bottom: BorderSide(color: Colors.blue, width: 2.0),
-              left: BorderSide.none, // No border on the left
-            ),
-          ),
-          child: Center(
-            child: Text('Custom Card'),
-          ),
-        ),
-      ),
-    ),
-  );
 }
