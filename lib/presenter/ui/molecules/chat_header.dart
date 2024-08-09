@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:teste_cubiq/presenter/ui/atoms/icon_colored_button.dart';
 import 'package:teste_cubiq/presenter/utils.dart';
 
 class ChatHeader extends StatelessWidget {
@@ -46,9 +47,18 @@ class ChatHeader extends StatelessWidget {
             ),
             Row(
               children: [
-                IconButton(onPressed: () {}, icon: const Icon(Icons.add)),
-                IconButton(onPressed: () {}, icon: const Icon(Icons.camera_alt)),
-                IconButton(onPressed: () {}, icon: const Icon(Icons.attach_file)),
+                IconColoredButton(
+                  backgroundColor: AppColors.backgroundColor,
+                  iconUrl: 'icons/Icon-6.svg',
+                ),
+                IconColoredButton(
+                  backgroundColor: AppColors.backgroundColor,
+                  iconUrl: 'icons/Icon-5.svg',
+                ),
+                IconColoredButton(
+                  backgroundColor: AppColors.backgroundColor,
+                  iconUrl: 'icons/Icon-4.svg',
+                ),
               ],
             ),
           ],

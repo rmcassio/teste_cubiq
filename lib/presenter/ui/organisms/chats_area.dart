@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:teste_cubiq/presenter/ui/atoms/icon_colored_button.dart';
 import 'package:teste_cubiq/presenter/ui/atoms/search_field.dart';
 import 'package:teste_cubiq/presenter/ui/molecules/chats_list.dart';
 import 'package:teste_cubiq/presenter/utils.dart';
@@ -11,6 +12,7 @@ class ChatsArea extends StatelessWidget {
   Widget build(BuildContext context) {
     return !isMobile
         ? Container(
+            padding: const EdgeInsets.symmetric(vertical: 8),
             color: AppColors.backgroundColor,
             width: 392,
             child: Container(
@@ -21,14 +23,14 @@ class ChatsArea extends StatelessWidget {
                   bottomRight: Radius.circular(12.0),
                 ),
                 border: Border(
-                  right: BorderSide(color: Colors.black.withOpacity(0.4), width: 0.5),
-                  bottom: BorderSide(color: Colors.black.withOpacity(0.4), width: 2),
+                  right: BorderSide(color: Colors.black.withOpacity(0.2), width: 0.5),
+                  bottom: BorderSide(color: Colors.black.withOpacity(0.2), width: 2),
                 ),
               ),
               child: Column(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 16.0).copyWith(),
+                    padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 16.0),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -36,9 +38,9 @@ class ChatsArea extends StatelessWidget {
                           'Conversas',
                           style: AppTextStyles.pageTitleStyle,
                         ),
-                        IconButton(
-                          onPressed: () {},
-                          icon: const Icon(Icons.add),
+                        IconColoredButton(
+                          backgroundColor: AppColors.backgroundSecondaryColor,
+                          iconUrl: 'icons/Icon-7.svg',
                         ),
                       ],
                     ),
@@ -60,7 +62,7 @@ class ChatsArea extends StatelessWidget {
                             ),
                           ),
                           child: const Padding(
-                            padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+                            padding: EdgeInsets.symmetric(vertical: 4.0, horizontal: 16.0),
                             child: Text('Todas'),
                           ),
                         ),
@@ -76,7 +78,7 @@ class ChatsArea extends StatelessWidget {
                             ),
                           ),
                           child: const Padding(
-                            padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+                            padding: EdgeInsets.symmetric(vertical: 4.0, horizontal: 16.0),
                             child: Text('Não Lidas'),
                           ),
                         ),
@@ -90,7 +92,7 @@ class ChatsArea extends StatelessWidget {
                             ),
                           ),
                           child: const Padding(
-                            padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+                            padding: EdgeInsets.symmetric(vertical: 4.0, horizontal: 16.0),
                             child: Text('Encerradas'),
                           ),
                         ),

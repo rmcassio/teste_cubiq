@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:teste_cubiq/presenter/ui/atoms/side_bar_button.dart';
 import 'package:teste_cubiq/presenter/utils.dart';
 
 class SideBar extends StatelessWidget {
@@ -24,20 +25,19 @@ class SideBar extends StatelessWidget {
             Column(
               children: [
                 SizedBox(
-                  height: 26,
-                  width: 27.64,
+                  height: 30,
+                  width: 31.64,
                   child: Image.asset(
                     'images/logomark.png',
                     height: 50,
                     fit: BoxFit.cover,
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: IconButton(
-                    icon: const Icon(Icons.home),
-                    onPressed: () {},
-                    tooltip: 'Home',
+                const SizedBox(height: 16),
+                const Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: SideBarButton(
+                    iconUrl: 'icons/Icon.svg',
                   ),
                 ),
               ],

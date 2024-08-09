@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:teste_cubiq/presenter/ui/atoms/buttons_pill.dart';
+import 'package:teste_cubiq/presenter/ui/atoms/send_button.dart';
 import 'package:teste_cubiq/presenter/utils.dart';
 
 class InputArea extends StatelessWidget {
@@ -22,15 +24,15 @@ class InputArea extends StatelessWidget {
                 hintText: 'Digite uma mensagem',
                 hoverColor: Colors.transparent,
                 enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: AppColors.borderColor),
+                  borderSide: BorderSide(color: AppColors.borderColor, width: 1.5),
                   borderRadius: BorderRadius.circular(8.0),
                 ),
                 focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: AppColors.borderColor),
+                  borderSide: BorderSide(color: AppColors.borderColor, width: 1.5),
                   borderRadius: BorderRadius.circular(8.0),
                 ),
                 border: OutlineInputBorder(
-                  borderSide: BorderSide(color: AppColors.borderColor),
+                  borderSide: BorderSide(color: AppColors.borderColor, width: 1.5),
                   borderRadius: BorderRadius.circular(8.0),
                 ),
               ),
@@ -40,12 +42,8 @@ class InputArea extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Row(children: [
-                  IconButton(onPressed: () {}, icon: const Icon(Icons.add)),
-                  IconButton(onPressed: () {}, icon: const Icon(Icons.camera_alt)),
-                  IconButton(onPressed: () {}, icon: const Icon(Icons.attach_file)),
-                ]),
-                IconButton(onPressed: () {}, icon: const Icon(Icons.send)),
+                ButtonsPill(),
+                SendButton(),
               ],
             ),
           ),

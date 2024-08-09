@@ -65,8 +65,8 @@ class FileBubble extends StatelessWidget {
               padding: const EdgeInsets.all(12.0),
               margin: const EdgeInsets.symmetric(vertical: 2.0),
               decoration: BoxDecoration(
-                border: isSentByMe ? Border.all(color: AppColors.myMessageColor) : Border.all(color: AppColors.borderColor),
-                color: !isSentByMe ? AppColors.messageColor : AppColors.myMessageColor,
+                border: Border.all(color: AppColors.borderColor),
+                color: AppColors.backgroundSecondaryColor,
                 borderRadius: isSentByMe
                     ? const BorderRadius.only(
                         topLeft: Radius.circular(8),
@@ -81,7 +81,7 @@ class FileBubble extends StatelessWidget {
               ),
               child: Text(
                 message,
-                style: !isSentByMe ? AppTextStyles.messageStyle : AppTextStyles.myMessageStyle,
+                style: AppTextStyles.messageStyle,
               ),
             ),
           ],

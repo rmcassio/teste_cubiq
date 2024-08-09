@@ -30,3 +30,28 @@ final class MessagesErrorState extends ChatState {
   final String message;
   MessagesErrorState(this.message);
 }
+
+//send message
+final class SendingMessageState extends ChatState {}
+
+final class MessageSentState extends ChatState {}
+
+final class MessageErrorState extends ChatState {
+  final String message;
+  MessageErrorState(this.message);
+}
+
+//receive message
+final class ReceivingMessageState extends ChatState {}
+
+final class MessageReceivedState extends ChatState {
+  final String sender;
+  final String message;
+  final String time;
+  MessageReceivedState(this.sender, this.message, this.time);
+}
+
+final class MessageReceivedErrorState extends ChatState {
+  final String message;
+  MessageReceivedErrorState(this.message);
+}
