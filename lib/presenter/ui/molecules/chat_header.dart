@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:teste_cubiq/presenter/ui/atoms/chat_avatar.dart';
 import 'package:teste_cubiq/presenter/ui/atoms/icon_colored_button.dart';
 import 'package:teste_cubiq/presenter/utils.dart';
 
@@ -10,8 +11,13 @@ class ChatHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      decoration: BoxDecoration(
+        color: AppColors.backgroundColor,
+        border: Border(
+          bottom: BorderSide(color: AppColors.borderColor),
+        ),
+      ),
       height: 98,
-      color: AppColors.backgroundColor,
       child: Padding(
         padding: const EdgeInsets.only(right: 24, left: 24),
         child: Row(
@@ -19,18 +25,7 @@ class ChatHeader extends StatelessWidget {
           children: [
             Row(
               children: [
-                SizedBox(
-                  height: 56,
-                  width: 56,
-                  child: ClipOval(
-                    child: Image.asset(
-                      'images/avatar.jpeg',
-                      width: 56.0,
-                      height: 56.0,
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                ),
+                const ChatAvatar(),
                 const SizedBox(width: 16),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,

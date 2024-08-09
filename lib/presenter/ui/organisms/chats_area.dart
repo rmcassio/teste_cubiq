@@ -23,8 +23,8 @@ class ChatsArea extends StatelessWidget {
                   bottomRight: Radius.circular(12.0),
                 ),
                 border: Border(
-                  right: BorderSide(color: Colors.black.withOpacity(0.2), width: 0.5),
-                  bottom: BorderSide(color: Colors.black.withOpacity(0.2), width: 2),
+                  right: BorderSide(color: Colors.black.withOpacity(0.3), width: 0.2),
+                  bottom: BorderSide(color: Colors.black.withOpacity(0.3), width: 1.0),
                 ),
               ),
               child: Column(

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:teste_cubiq/presenter/utils.dart';
 
 class SideBarButton extends StatefulWidget {
   final String iconUrl;
