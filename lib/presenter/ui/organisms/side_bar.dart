@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:teste_cubiq/presenter/ui/atoms/profile_avatar.dart';
 import 'package:teste_cubiq/presenter/ui/atoms/side_bar_button.dart';
 import 'package:teste_cubiq/presenter/utils.dart';
 
@@ -26,7 +27,7 @@ class SideBar extends StatelessWidget {
               children: [
                 SizedBox(
                   height: 30,
-                  width: 31.64,
+                  width: 31.65,
                   child: Image.asset(
                     'images/logomark.png',
                     height: 50,
@@ -42,18 +43,7 @@ class SideBar extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(
-              height: 48,
-              width: 48,
-              child: ClipOval(
-                child: Image.asset(
-                  'images/avatar.jpeg',
-                  width: 48.0,
-                  height: 48.0,
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
+            const ProfileAvatar()
           ],
         ),
       ),

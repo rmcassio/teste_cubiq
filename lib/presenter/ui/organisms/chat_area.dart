@@ -11,13 +11,13 @@ class ChatArea extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        ChatHeader(chatName: 'Amanda de Castro Moreira'),
+        const ChatHeader(chatName: 'Amanda de Castro Moreira'),
         Expanded(
           child: MessagesList(
             messages: messagesMock,
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 140,
           child: InputArea(),
         ),

@@ -14,7 +14,7 @@ class ChatHeader extends StatelessWidget {
       decoration: BoxDecoration(
         color: AppColors.backgroundColor,
         border: Border(
-          bottom: BorderSide(color: AppColors.borderColor),
+          bottom: BorderSide(color: AppColors.borderColor, width: 0.5),
         ),
       ),
       height: 98,

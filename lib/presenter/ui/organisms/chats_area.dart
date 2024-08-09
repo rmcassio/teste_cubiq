@@ -23,8 +23,8 @@ class ChatsArea extends StatelessWidget {
                   bottomRight: Radius.circular(12.0),
                 ),
                 border: Border(
-                  right: BorderSide(color: Colors.black.withOpacity(0.3), width: 0.2),
-                  bottom: BorderSide(color: Colors.black.withOpacity(0.3), width: 1.0),
+                  right: BorderSide(color: AppColors.borderColor, width: 0.4),
+                  bottom: BorderSide(color: AppColors.borderColor, width: 1.5),
                 ),
               ),
               child: Column(
@@ -51,7 +51,6 @@ class ChatsArea extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        // Todas button
                         TextButton(
                           onPressed: () {},
                           style: TextButton.styleFrom(
