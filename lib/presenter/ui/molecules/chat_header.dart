@@ -5,8 +5,9 @@ import 'package:teste_cubiq/presenter/utils.dart';
 
 class ChatHeader extends StatelessWidget {
   final String chatName;
+  final String url;
 
-  const ChatHeader({super.key, required this.chatName});
+  const ChatHeader({super.key, required this.chatName, required this.url});
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +26,7 @@ class ChatHeader extends StatelessWidget {
           children: [
             Row(
               children: [
-                const ChatAvatar(),
+                ChatAvatar(url: url),
                 const SizedBox(width: 16),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,

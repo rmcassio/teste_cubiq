@@ -9,7 +9,8 @@ class ButtonsPill extends StatelessWidget {
     return Row(
       children: [
         Container(
-          padding: const EdgeInsets.all(10),
+          height: 35,
+          // padding: const EdgeInsets.all(10),
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(10),
@@ -18,23 +19,32 @@ class ButtonsPill extends StatelessWidget {
                 color: Colors.grey.withOpacity(0.1),
                 spreadRadius: 0.2,
                 blurRadius: 2,
-                offset: const Offset(0, 1), 
+                offset: const Offset(0, 1),
               ),
             ],
           ),
           child: Row(
             children: [
               const SizedBox(width: 18),
-              SvgPicture.asset(
-                'icons/Icon-1.svg',
+              InkWell(
+                onTap: () {},
+                child: SvgPicture.asset(
+                  'icons/Icon-1.svg',
+                ),
               ),
               const SizedBox(width: 18),
-              SvgPicture.asset(
-                'icons/Icon-3.svg',
+              InkWell(
+                onTap: () {},
+                child: SvgPicture.asset(
+                  'icons/Icon-3.svg',
+                ),
               ),
               const SizedBox(width: 18),
-              SvgPicture.asset(
-                'icons/Icon-2.svg',
+              InkWell(
+                onTap: () {},
+                child: SvgPicture.asset(
+                  'icons/Icon-2.svg',
+                ),
               ),
               const SizedBox(width: 18),
             ],

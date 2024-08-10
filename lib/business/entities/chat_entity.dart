@@ -5,7 +5,7 @@ class ChatEntity {
   final String imageUrl;
   final String lastMesasage;
   final DateTime lastMessageTime;
-  final ChatType type;
+  ChatType type;
 
   ChatEntity({
     required this.name,

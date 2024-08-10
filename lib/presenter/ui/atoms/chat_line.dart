@@ -42,11 +42,17 @@ class ChatLine extends StatelessWidget {
                         DateFormat('HH:mm').format(chat.lastMessageTime),
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
-                        style: TextStyle(
-                          fontSize: AppTexts.extraSmallSize,
-                          fontWeight: FontWeight.w400,
-                          color: AppColors.textQuartiaryColor,
-                        ),
+                        style: chat.type == ChatType.unread
+                            ? TextStyle(
+                                fontSize: AppTexts.extraSmallSize,
+                                fontWeight: FontWeight.w700,
+                                color: AppColors.iconButtonColor,
+                              )
+                            : TextStyle(
+                                fontSize: AppTexts.extraSmallSize,
+                                fontWeight: FontWeight.w400,
+                                color: AppColors.textQuartiaryColor,
+                              ),
                       ),
                   ],
                 ),

@@ -1,16 +1,38 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:teste_cubiq/business/cubits/chat/chat_cubit.dart';
+import 'package:teste_cubiq/business/cubits/chat/chat_mock.dart';
+import 'package:teste_cubiq/business/entities/chat_entity.dart';
 import 'package:teste_cubiq/presenter/ui/atoms/icon_colored_button.dart';
 import 'package:teste_cubiq/presenter/ui/atoms/search_field.dart';
+import 'package:teste_cubiq/presenter/ui/atoms/text_with_border_button.dart';
 import 'package:teste_cubiq/presenter/ui/molecules/chats_list.dart';
 import 'package:teste_cubiq/presenter/utils.dart';
 
-class ChatsArea extends StatelessWidget {
+enum ChatTypeSelected { all, unread, finished }
+
+class ChatsArea extends StatefulWidget {
   final bool isMobile;
   const ChatsArea({super.key, required this.isMobile});
 
   @override
+  State<ChatsArea> createState() => _ChatsAreaState();
+}
+
+class _ChatsAreaState extends State<ChatsArea> {
+  final TextEditingController _searchController = TextEditingController();
+  ChatTypeSelected _chatTypeSelected = ChatTypeSelected.all;
+
+  void changeChatTypeSelected(ChatTypeSelected chatTypeSelected) {
+    setState(() {
+      _chatTypeSelected = chatTypeSelected;
+    });
+    context.read<ChatCubit>().getChats(chatTypeSelected, _searchController.text);
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return !isMobile
+    return !widget.isMobile
         ? Container(
             padding: const EdgeInsets.symmetric(vertical: 8),
             color: AppColors.backgroundColor,
@@ -24,13 +46,13 @@ class ChatsArea extends StatelessWidget {
                 ),
                 border: Border(
                   right: BorderSide(color: AppColors.borderColor, width: 0.4),
-                  bottom: BorderSide(color: AppColors.borderColor, width: 1.5),
+                  bottom: BorderSide(color: AppColors.borderColor, width: 1.9),
                 ),
               ),
               child: Column(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 16.0),
+                    padding: const EdgeInsets.only(left: 16.0, right: 4, bottom: 16.0, top: 16.0),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -45,68 +67,56 @@ class ChatsArea extends StatelessWidget {
                       ],
                     ),
                   ),
-                  const SearchField(),
+                  SearchField(
+                    controller: _searchController,
+                    onChanged: (value) => context.read<ChatCubit>().getChats(_chatTypeSelected, value),
+                  ),
                   Padding(
                     padding: const EdgeInsets.only(left: 8.0, right: 8.0, bottom: 16),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        TextButton(
-                          onPressed: () {},
-                          style: TextButton.styleFrom(
-                            foregroundColor: Colors.black,
-                            backgroundColor: AppColors.backgroundSecondaryColor,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(18.0),
-                            ),
-                          ),
-                          child: const Padding(
-                            padding: EdgeInsets.symmetric(vertical: 4.0, horizontal: 16.0),
-                            child: Text('Todas'),
-                          ),
+                        TextWithBorderButton(
+                          qtdChats: 0,
+                          isSelected: _chatTypeSelected == ChatTypeSelected.all,
+                          label: 'Todas',
+                          onPressed: () => changeChatTypeSelected(ChatTypeSelected.all),
                         ),
-                        const SizedBox(width: 8.0),
-                        TextButton(
-                          onPressed: () {},
-                          style: TextButton.styleFrom(
-                            foregroundColor: Colors.black,
-                            backgroundColor: AppColors.backgroundSecondaryColor,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(18.0),
-                              side: BorderSide(color: AppColors.iconButtonColor, width: 2),
-                            ),
-                          ),
-                          child: const Padding(
-                            padding: EdgeInsets.symmetric(vertical: 4.0, horizontal: 16.0),
-                            child: Text('Não Lidas'),
-                          ),
+                        const SizedBox(width: 24.0),
+                        BlocBuilder<ChatCubit, ChatState>(
+                          builder: (context, state) {
+                            return TextWithBorderButton(
+                              qtdChats: context.read<ChatCubit>().notRead.toDouble(),
+                              isSelected: _chatTypeSelected == ChatTypeSelected.unread,
+                              label: 'Não lidas',
+                              onPressed: () => changeChatTypeSelected(ChatTypeSelected.unread),
+                            );
+                          },
                         ),
-                        TextButton(
-                          onPressed: () {},
-                          style: TextButton.styleFrom(
-                            foregroundColor: Colors.black,
-                            backgroundColor: AppColors.backgroundSecondaryColor,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(18.0),
-                            ),
-                          ),
-                          child: const Padding(
-                            padding: EdgeInsets.symmetric(vertical: 4.0, horizontal: 16.0),
-                            child: Text('Encerradas'),
-                          ),
+                        const SizedBox(width: 24.0),
+                        TextWithBorderButton(
+                          qtdChats: 0,
+                          isSelected: _chatTypeSelected == ChatTypeSelected.finished,
+                          label: 'Encerradas',
+                          onPressed: () => changeChatTypeSelected(ChatTypeSelected.finished),
                         ),
                       ],
                     ),
                   ),
-                  const SizedBox(width: 8.0),
                   const Expanded(child: ChatsList()),
+                  const SizedBox(height: 8.0),
                 ],
               ),
             ))
-        : const Column(
+        : Column(
             children: [
-              SearchField(),
-              Expanded(child: ChatsList()),
+              SearchField(
+                controller: _searchController,
+                onChanged: (value) => context.read<ChatCubit>().getChats(_chatTypeSelected, value),
+              ),
+              const Expanded(
+                child: ChatsList(),
+              ),
             ],
           );
   }

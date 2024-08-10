@@ -34,7 +34,11 @@ final class MessagesErrorState extends ChatState {
 //send message
 final class SendingMessageState extends ChatState {}
 
-final class MessageSentState extends ChatState {}
+final class MessageSentState extends ChatState {
+  final List<MessageEntity> messages;
+
+  MessageSentState({required this.messages});
+}
 
 final class MessageErrorState extends ChatState {
   final String message;
@@ -45,13 +49,23 @@ final class MessageErrorState extends ChatState {
 final class ReceivingMessageState extends ChatState {}
 
 final class MessageReceivedState extends ChatState {
-  final String sender;
-  final String message;
-  final String time;
-  MessageReceivedState(this.sender, this.message, this.time);
+  final List<MessageEntity> messages;
+  MessageReceivedState(this.messages);
 }
 
 final class MessageReceivedErrorState extends ChatState {
   final String message;
   MessageReceivedErrorState(this.message);
+}
+
+//selected chat
+final class SelectedChatState extends ChatState {
+  final ChatEntity chat;
+  SelectedChatState(this.chat);
+}
+
+//read chat
+final class ReadChatState extends ChatState {
+  final int index;
+  ReadChatState(this.index);
 }

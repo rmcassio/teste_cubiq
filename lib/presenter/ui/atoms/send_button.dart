@@ -3,7 +3,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:teste_cubiq/presenter/utils.dart';
 
 class SendButton extends StatelessWidget {
-  const SendButton({super.key});
+  final VoidCallback onPressed;
+  const SendButton({super.key, required this.onPressed});
 
   @override
   Widget build(BuildContext context) {
@@ -16,9 +17,7 @@ class SendButton extends StatelessWidget {
         borderRadius: BorderRadius.circular(10),
       ),
       child: TextButton(
-        onPressed: () {
-          // Your action here
-        },
+        onPressed: onPressed,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class ChatAvatar extends StatelessWidget {
-  const ChatAvatar({super.key});
+  final url;
+  const ChatAvatar({super.key, required this.url});
 
   @override
   Widget build(BuildContext context) {
@@ -10,7 +11,7 @@ class ChatAvatar extends StatelessWidget {
       width: 56,
       child: ClipOval(
         child: Image.asset(
-          'images/avatar.jpeg',
+          url,
           width: 56.0,
           height: 56.0,
           fit: BoxFit.cover,

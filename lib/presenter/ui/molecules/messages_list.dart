@@ -6,14 +6,16 @@ import 'package:teste_cubiq/presenter/ui/atoms/message_bubble.dart';
 import 'package:teste_cubiq/presenter/utils.dart';
 
 class MessagesList extends StatelessWidget {
+  final ScrollController scrollController;
   final List<MessageEntity> messages;
-  const MessagesList({super.key, required this.messages});
+  const MessagesList({super.key, required this.messages, required this.scrollController});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       color: AppColors.backgroundSecondaryColor,
       child: ListView.builder(
+        controller: scrollController,
         padding: const EdgeInsets.only(top: 8.0, bottom: 8.0, right: 36.0, left: 16),
         itemCount: messages.length,
         itemBuilder: (context, index) {

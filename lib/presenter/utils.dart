@@ -8,6 +8,7 @@ class AppColors {
   static Color get borderColor => const Color(0xFFE4E7EC);
   static Color get iconButtonColor => const Color(0xFF2E90FA);
   static Color get actionButtonColor => const Color(0xFF246BE6);
+  static Color get selectedButtonColor => const Color(0xFF99C2FF);
   static Color get headerButtonsColor => const Color(0xFF475467);
   static Color get sideBarButtonsColor => const Color(0xFF667085);
   static Color get textPrimaryColor => const Color(0xFF101828);

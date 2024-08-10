@@ -35,7 +35,7 @@ List<ChatEntity> chatsMock = [
     lastMesasage: 'Vamos marcar um café?',
     imageUrl: 'images/avatar4.png',
     lastMessageTime: DateTime.now().subtract(const Duration(days: 1)),
-    type: ChatType.read,
+    type: ChatType.unread,
   ),
   ChatEntity(
     name: 'Arya Stark',
