@@ -6,11 +6,39 @@ class ButtonsPill extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Widget getButtons() {
+      return Row(
+        children: [
+          const SizedBox(width: 18),
+          InkWell(
+            onTap: () {},
+            child: SvgPicture.asset(
+              'icons/Icon-1.svg',
+            ),
+          ),
+          const SizedBox(width: 18),
+          InkWell(
+            onTap: () {},
+            child: SvgPicture.asset(
+              'icons/Icon-3.svg',
+            ),
+          ),
+          const SizedBox(width: 18),
+          InkWell(
+            onTap: () {},
+            child: SvgPicture.asset(
+              'icons/Icon-2.svg',
+            ),
+          ),
+          const SizedBox(width: 18),
+        ],
+      );
+    }
+
     return Row(
       children: [
         Container(
           height: 35,
-          // padding: const EdgeInsets.all(10),
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(10),
@@ -23,32 +51,7 @@ class ButtonsPill extends StatelessWidget {
               ),
             ],
           ),
-          child: Row(
-            children: [
-              const SizedBox(width: 18),
-              InkWell(
-                onTap: () {},
-                child: SvgPicture.asset(
-                  'icons/Icon-1.svg',
-                ),
-              ),
-              const SizedBox(width: 18),
-              InkWell(
-                onTap: () {},
-                child: SvgPicture.asset(
-                  'icons/Icon-3.svg',
-                ),
-              ),
-              const SizedBox(width: 18),
-              InkWell(
-                onTap: () {},
-                child: SvgPicture.asset(
-                  'icons/Icon-2.svg',
-                ),
-              ),
-              const SizedBox(width: 18),
-            ],
-          ),
+          child: getButtons(),
         ),
       ],
     );

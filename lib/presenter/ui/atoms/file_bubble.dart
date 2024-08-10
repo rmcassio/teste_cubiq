@@ -17,6 +17,20 @@ class FileBubble extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    BorderRadius getBorderRadius() {
+      return isSentByMe
+          ? const BorderRadius.only(
+              topLeft: Radius.circular(8),
+              bottomLeft: Radius.circular(8),
+              bottomRight: Radius.circular(8),
+            )
+          : const BorderRadius.only(
+              topRight: Radius.circular(8),
+              bottomLeft: Radius.circular(8),
+              bottomRight: Radius.circular(8),
+            );
+    }
+
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: Align(
@@ -67,17 +81,7 @@ class FileBubble extends StatelessWidget {
               decoration: BoxDecoration(
                 border: Border.all(color: AppColors.borderColor),
                 color: AppColors.backgroundSecondaryColor,
-                borderRadius: isSentByMe
-                    ? const BorderRadius.only(
-                        topLeft: Radius.circular(8),
-                        bottomLeft: Radius.circular(8),
-                        bottomRight: Radius.circular(8),
-                      )
-                    : const BorderRadius.only(
-                        topRight: Radius.circular(8),
-                        bottomLeft: Radius.circular(8),
-                        bottomRight: Radius.circular(8),
-                      ),
+                borderRadius: getBorderRadius(),
               ),
               child: Row(
                 children: [

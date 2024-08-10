@@ -14,6 +14,25 @@ class ChatHeader extends StatelessWidget {
     return LayoutBuilder(builder: (context, constraints) {
       final bool isHalfScreen = constraints.maxWidth <= 550;
 
+      Widget getButtons() {
+        return Row(
+          children: [
+            IconColoredButton(
+              backgroundColor: AppColors.backgroundColor,
+              iconUrl: 'icons/Icon-6.svg',
+            ),
+            IconColoredButton(
+              backgroundColor: AppColors.backgroundColor,
+              iconUrl: 'icons/Icon-5.svg',
+            ),
+            IconColoredButton(
+              backgroundColor: AppColors.backgroundColor,
+              iconUrl: 'icons/Icon-4.svg',
+            ),
+          ],
+        );
+      }
+
       return Container(
         decoration: BoxDecoration(
           color: AppColors.backgroundColor,
@@ -47,42 +66,10 @@ class ChatHeader extends StatelessWidget {
                       ),
                     ],
                   ),
-                  if (!isHalfScreen)
-                    Row(
-                      children: [
-                        IconColoredButton(
-                          backgroundColor: AppColors.backgroundColor,
-                          iconUrl: 'icons/Icon-6.svg',
-                        ),
-                        IconColoredButton(
-                          backgroundColor: AppColors.backgroundColor,
-                          iconUrl: 'icons/Icon-5.svg',
-                        ),
-                        IconColoredButton(
-                          backgroundColor: AppColors.backgroundColor,
-                          iconUrl: 'icons/Icon-4.svg',
-                        ),
-                      ],
-                    ),
+                  if (!isHalfScreen) getButtons(),
                 ],
               ),
-              if (isHalfScreen)
-                Row(
-                  children: [
-                    IconColoredButton(
-                      backgroundColor: AppColors.backgroundColor,
-                      iconUrl: 'icons/Icon-6.svg',
-                    ),
-                    IconColoredButton(
-                      backgroundColor: AppColors.backgroundColor,
-                      iconUrl: 'icons/Icon-5.svg',
-                    ),
-                    IconColoredButton(
-                      backgroundColor: AppColors.backgroundColor,
-                      iconUrl: 'icons/Icon-4.svg',
-                    ),
-                  ],
-                ),
+              if (isHalfScreen) getButtons(),
             ],
           ),
         ),

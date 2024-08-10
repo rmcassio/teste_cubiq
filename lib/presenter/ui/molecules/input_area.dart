@@ -18,53 +18,37 @@ class InputArea extends StatelessWidget {
       child: Column(
         children: [
           Expanded(
-            child: KeyboardListener(
-              onKeyEvent: (event) async {
-                if (controller.text.isEmpty || controller.text.trim().isEmpty) {
-                  return;
-                }
-
-                // if (event.physicalKey == PhysicalKeyboardKey.enter) {
-                //   //TODO verificar
-                //   onPressed();
-                //   focusNode.unfocus();
-                //   await Future.delayed(const Duration(milliseconds: 200));
-                //   fieldFocus.requestFocus();
-                // }
-              },
-              focusNode: focusNode,
-              child: TextField(
-                style: const TextStyle(
-                  fontSize: 14,
+            child: TextField(
+              style: const TextStyle(
+                fontSize: 14,
+                fontWeight: FontWeight.w400,
+              ),
+              focusNode: fieldFocus,
+              controller: controller,
+              cursorColor: Colors.black,
+              maxLines: null,
+              minLines: 3,
+              decoration: InputDecoration(
+                filled: true,
+                fillColor: AppColors.textWhiteColor,
+                hintStyle: const TextStyle(
                   fontWeight: FontWeight.w400,
+                  fontSize: 14,
+                  color: Color(0xFF667085),
                 ),
-                focusNode: fieldFocus,
-                controller: controller,
-                cursorColor: Colors.black,
-                maxLines: null,
-                minLines: 3,
-                decoration: InputDecoration(
-                  filled: true,
-                  fillColor: AppColors.textWhiteColor,
-                  hintStyle: const TextStyle(
-                    fontWeight: FontWeight.w400,
-                    fontSize: 14,
-                    color: Color(0xFF667085),
-                  ),
-                  hintText: 'Digite uma mensagem',
-                  hoverColor: Colors.transparent,
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: AppColors.borderColor, width: 1.5),
-                    borderRadius: BorderRadius.circular(8.0),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: AppColors.borderColor, width: 1.5),
-                    borderRadius: BorderRadius.circular(8.0),
-                  ),
-                  border: OutlineInputBorder(
-                    borderSide: BorderSide(color: AppColors.borderColor, width: 1.5),
-                    borderRadius: BorderRadius.circular(8.0),
-                  ),
+                hintText: 'Digite uma mensagem',
+                hoverColor: Colors.transparent,
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: AppColors.borderColor, width: 1.5),
+                  borderRadius: BorderRadius.circular(8.0),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: AppColors.borderColor, width: 1.5),
+                  borderRadius: BorderRadius.circular(8.0),
+                ),
+                border: OutlineInputBorder(
+                  borderSide: BorderSide(color: AppColors.borderColor, width: 1.5),
+                  borderRadius: BorderRadius.circular(8.0),
                 ),
               ),
             ),

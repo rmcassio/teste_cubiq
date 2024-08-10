@@ -10,6 +10,20 @@ class ChatLine extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    TextStyle getChatType() {
+      return chat.type == ChatType.unread
+          ? TextStyle(
+              fontSize: AppTexts.extraSmallSize,
+              fontWeight: FontWeight.w700,
+              color: AppColors.iconButtonColor,
+            )
+          : TextStyle(
+              fontSize: AppTexts.extraSmallSize,
+              fontWeight: FontWeight.w400,
+              color: AppColors.textQuartiaryColor,
+            );
+    }
+
     return Row(
       children: [
         Padding(
@@ -47,17 +61,7 @@ class ChatLine extends StatelessWidget {
                       DateFormat('HH:mm').format(chat.lastMessageTime),
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
-                      style: chat.type == ChatType.unread
-                          ? TextStyle(
-                              fontSize: AppTexts.extraSmallSize,
-                              fontWeight: FontWeight.w700,
-                              color: AppColors.iconButtonColor,
-                            )
-                          : TextStyle(
-                              fontSize: AppTexts.extraSmallSize,
-                              fontWeight: FontWeight.w400,
-                              color: AppColors.textQuartiaryColor,
-                            ),
+                      style: getChatType(),
                     ),
                   ],
                 ),
