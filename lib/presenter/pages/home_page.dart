@@ -12,7 +12,7 @@ class HomePage extends StatelessWidget {
     return LayoutBuilder(
       builder: (context, constraints) {
         final bool isHalfScreen = constraints.maxWidth <= 850;
-        final bool isMobile = constraints.maxWidth <= 500;
+        final bool isMobile = constraints.maxWidth <= 800;
 
         return Scaffold(
           backgroundColor: AppColors.backgroundColor,

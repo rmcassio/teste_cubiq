@@ -11,55 +11,82 @@ class ChatHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: AppColors.backgroundColor,
-        border: Border(
-          bottom: BorderSide(color: AppColors.borderColor, width: 0.5),
+    return LayoutBuilder(builder: (context, constraints) {
+      final bool isHalfScreen = constraints.maxWidth <= 550;
+
+      return Container(
+        decoration: BoxDecoration(
+          color: AppColors.backgroundColor,
+          border: Border(
+            bottom: BorderSide(color: AppColors.borderColor, width: 0.5),
+          ),
         ),
-      ),
-      height: 98,
-      child: Padding(
-        padding: const EdgeInsets.only(right: 24, left: 24),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Row(
-              children: [
-                ChatAvatar(url: url),
-                const SizedBox(width: 16),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      chatName,
-                      style: AppTextStyles.chatTitleStyle,
+        height: isHalfScreen ? 130 : 98,
+        child: Padding(
+          padding: const EdgeInsets.only(right: 24, left: 24),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    children: [
+                      ChatAvatar(url: url),
+                      const SizedBox(width: 16),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            chatName,
+                            style: AppTextStyles.chatTitleStyle,
+                          ),
+                          const Text('Tempo restante na janela 24 horas'),
+                        ],
+                      ),
+                    ],
+                  ),
+                  if (!isHalfScreen)
+                    Row(
+                      children: [
+                        IconColoredButton(
+                          backgroundColor: AppColors.backgroundColor,
+                          iconUrl: 'icons/Icon-6.svg',
+                        ),
+                        IconColoredButton(
+                          backgroundColor: AppColors.backgroundColor,
+                          iconUrl: 'icons/Icon-5.svg',
+                        ),
+                        IconColoredButton(
+                          backgroundColor: AppColors.backgroundColor,
+                          iconUrl: 'icons/Icon-4.svg',
+                        ),
+                      ],
                     ),
-                    const Text('Tempo restante na janela 24 horas'),
+                ],
+              ),
+              if (isHalfScreen)
+                Row(
+                  children: [
+                    IconColoredButton(
+                      backgroundColor: AppColors.backgroundColor,
+                      iconUrl: 'icons/Icon-6.svg',
+                    ),
+                    IconColoredButton(
+                      backgroundColor: AppColors.backgroundColor,
+                      iconUrl: 'icons/Icon-5.svg',
+                    ),
+                    IconColoredButton(
+                      backgroundColor: AppColors.backgroundColor,
+                      iconUrl: 'icons/Icon-4.svg',
+                    ),
                   ],
                 ),
-              ],
-            ),
-            Row(
-              children: [
-                IconColoredButton(
-                  backgroundColor: AppColors.backgroundColor,
-                  iconUrl: 'icons/Icon-6.svg',
-                ),
-                IconColoredButton(
-                  backgroundColor: AppColors.backgroundColor,
-                  iconUrl: 'icons/Icon-5.svg',
-                ),
-                IconColoredButton(
-                  backgroundColor: AppColors.backgroundColor,
-                  iconUrl: 'icons/Icon-4.svg',
-                ),
-              ],
-            ),
-          ],
+            ],
+          ),
         ),
-      ),
-    );
+      );
+    });
   }
 }

@@ -2,7 +2,7 @@ enum MessageType { text, file }
 
 class MessageEntity {
   final String text;
-  final String sender;
+  String sender;
   final DateTime dateTime;
   final MessageType type;
   final bool isSentByMe;

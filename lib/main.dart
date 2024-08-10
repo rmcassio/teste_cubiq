@@ -9,10 +9,8 @@ void main() async {
 }
 
 Widget _wrapProviders(Widget child) {
-  return MultiBlocProvider(
-    providers: [
-      BlocProvider<ChatCubit>(create: (context) => ChatCubit()),
-    ],
+  return BlocProvider<ChatCubit>(
+    create: (context) => ChatCubit(),
     child: child,
   );
 }
@@ -25,6 +23,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp.router(
       title: 'Cubiq teste',
       theme: ThemeData(
+        scrollbarTheme: ScrollbarThemeData(
+          thumbColor: WidgetStateProperty.all(const Color(0xFFEAECF0)),
+          trackColor: WidgetStateProperty.all(Colors.white),
+          thickness: WidgetStateProperty.all(8.0),
+          radius: const Radius.circular(8.0),
+        ),
         fontFamily: 'Inter',
       ),
       debugShowCheckedModeBanner: false,

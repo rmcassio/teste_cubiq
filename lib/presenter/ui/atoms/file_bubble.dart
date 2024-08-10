@@ -79,9 +79,32 @@ class FileBubble extends StatelessWidget {
                         bottomRight: Radius.circular(8),
                       ),
               ),
-              child: Text(
-                message,
-                style: AppTextStyles.messageStyle,
+              child: Row(
+                children: [
+                  SizedBox(
+                    height: 55,
+                    width: 55,
+                    child: Image.asset('images/pdf.png'),
+                  ),
+                  const SizedBox(width: 8.0),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        message,
+                        style: AppTextStyles.messageTitleStyle,
+                      ),
+                      Text(
+                        '200 KB',
+                        style: TextStyle(
+                          fontSize: AppTexts.smallTextSize,
+                          color: AppColors.textTertiaryColor,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
               ),
             ),
           ],

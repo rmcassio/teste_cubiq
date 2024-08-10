@@ -146,10 +146,10 @@ final messagesMock = [
     isSentByMe: false,
   ),
   MessageEntity(
-    text: 'Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla.',
+    text: 'My File.pdf',
     sender: 'Bran',
     dateTime: DateTime(2024, 8, 7, 11, 45),
-    type: MessageType.text,
+    type: MessageType.file,
     isSentByMe: true,
   ),
   MessageEntity(

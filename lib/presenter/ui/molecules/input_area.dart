@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:teste_cubiq/presenter/ui/atoms/buttons_pill.dart';
 import 'package:teste_cubiq/presenter/ui/atoms/send_button.dart';
 import 'package:teste_cubiq/presenter/utils.dart';
@@ -35,6 +34,10 @@ class InputArea extends StatelessWidget {
               },
               focusNode: focusNode,
               child: TextField(
+                style: const TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w400,
+                ),
                 focusNode: fieldFocus,
                 controller: controller,
                 cursorColor: Colors.black,
@@ -43,6 +46,11 @@ class InputArea extends StatelessWidget {
                 decoration: InputDecoration(
                   filled: true,
                   fillColor: AppColors.textWhiteColor,
+                  hintStyle: const TextStyle(
+                    fontWeight: FontWeight.w400,
+                    fontSize: 14,
+                    color: Color(0xFF667085),
+                  ),
                   hintText: 'Digite uma mensagem',
                   hoverColor: Colors.transparent,
                   enabledBorder: OutlineInputBorder(

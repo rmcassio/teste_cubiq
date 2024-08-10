@@ -49,7 +49,7 @@ class _ChatAreaState extends State<ChatArea> {
               listener: (context, state) async {
                 if (state is MessagesLoadedState) {
                   await Future.delayed(const Duration(milliseconds: 100));
-                  _scrollController.animateTo(_scrollController.position.maxScrollExtent + 40, curve: Curves.easeIn, duration: Durations.short2);
+                  _scrollController.animateTo(_scrollController.position.maxScrollExtent + 70, curve: Curves.easeIn, duration: Durations.short2);
                 }
                 if (state is MessageReceivedState) {
                   await Future.delayed(const Duration(milliseconds: 100));
@@ -86,7 +86,12 @@ class _ChatAreaState extends State<ChatArea> {
                 focusNode: FocusNode(),
                 fieldFocus: FocusNode(),
                 controller: _messageController,
-                onPressed: () => context.read<ChatCubit>().sendMessage(_messageController.text, 'Amanda de Castro Moreira', DateTime.now(), true),
+                onPressed: () {
+                  if (_messageController.text.isEmpty || _messageController.text.trim().isEmpty) {
+                    return;
+                  }
+                  context.read<ChatCubit>().sendMessage(_messageController.text, 'Operador', DateTime.now(), true);
+                },
               ),
             ),
           ],

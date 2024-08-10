@@ -43,6 +43,9 @@ class ChatCubit extends Cubit<ChatState> {
     messages.clear();
     emit(GettingMessagesState());
     messages.addAll(messagesMock);
+    for (var msg in messages) {
+      msg.isSentByMe ? msg.sender = 'Operador' : msg.sender = selectedChat?.name ?? '';
+    }
     await Future.delayed(const Duration(seconds: 1));
     emit(MessagesLoadedState(messages));
   }
@@ -57,7 +60,8 @@ class ChatCubit extends Cubit<ChatState> {
 
   void receiveMessage() async {
     await Future.delayed(const Duration(seconds: 1));
-    messages.add(MessageEntity(text: 'Mensagem recebida!', sender: 'Varys', dateTime: DateTime.now(), type: MessageType.text, isSentByMe: false));
+    messages.add(MessageEntity(
+        text: 'Mensagem recebida!', sender: selectedChat?.name ?? '', dateTime: DateTime.now(), type: MessageType.text, isSentByMe: false));
     emit(MessageReceivedState(messages));
   }
 
